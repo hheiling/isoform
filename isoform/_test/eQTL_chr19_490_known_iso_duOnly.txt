@@ -1,0 +1,2 @@
+cluster	maxLRS	n	p	k0	k1	k0p	k1p	pResample	nResample
+chr19_490	-0.1462	780	7	2	4	2	4	0.72727	10

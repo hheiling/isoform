@@ -1,0 +1,32 @@
+
+useDynLib(isoform)
+
+import(zlibbioc, MASS, gtools)
+
+# ------------------------------------------
+# Export directives.  
+# ------------------------------------------
+
+export(countReads)
+export(geneModel)
+export(isoSelect)
+export(isoSelectZI)
+export(plotIsoform)
+export(loadData)
+export(effLen1)
+export(effLen2)
+export(effLen)
+export(knownIsoforms)
+export(compareAnno.isoDetector)
+export(compareAnno.cufflinks)
+export(compareAnno.cuffcompare)
+export(distSet)
+export(isoDu)
+export(isoDetector)
+export(readFragmentSizes)
+
+# ------------------------------------------
+# S3method declarations.  
+# ------------------------------------------
+
+S3method(print, iSelect)

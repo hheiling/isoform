@@ -1,0 +1,60 @@
+
+R version 3.1.0 (2014-04-10) -- "Spring Dance"
+Copyright (C) 2014 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.1.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 
+> library(isoform)
+Loading required package: gtools
+Loading required package: MASS
+> 
+> data(isoDuEx2)
+> 
+> names(isoDuEx2$gL[[1]])
+[1] "chr1_555"  "chr19_490"
+> 
+> g2test     = "chr19_490"
+> tags       = names(isoDuEx2$gL)
+> xData      = isoDuEx2$xData[,1:2]
+> readDepth  = isoDuEx2$readDepth$rd
+> pdDistL    = isoDuEx2$pdDistL
+> outputFile = sprintf("eQTL_%s_known_iso_duOnly.txt", g2test)
+> 
+> all(isoDuEx2$readDepth$sampleID == tags)
+[1] TRUE
+> 
+> isoDu(tags, isoDuEx2$gL, xData, readDepth, outputFile, pdDistL,
++ g2test, readLen=37, method="permutation", lmax=300,
++ nResample=10, maxTime=1000, duOnly=TRUE)
+
+------------------------------------------------------------------
+testing differential isoform usage for 1 trancription clusters
+------------------------------------------------------------------
+
+
+----------------------------------------------------------
+trancription cluster 1 @ Wed Oct 15 07:46:17 2014
+----------------------------------------------------------
+
+calculating effective length for 7 isoforms from 88 exon sets
+..........
+> 
+> 
+> 
+> proc.time()
+   user  system elapsed 
+ 66.227   0.147  66.607 

@@ -1,0 +1,13 @@
+Package: isoform
+Type: Package
+Title: mRNA isoform
+Version: 0.99.2
+Date: 2013-05-06
+Author: Wei Sun
+Maintainer: Wei Sun <weisun@email.unc.edu>
+Depends: gtools, MASS
+Imports: zlibbioc
+Description: mRNA isoform detection and assessment of differential isoform usage  
+License: GPL (>= 2)
+LazyLoad: yes
+Packaged: 2014-10-15 19:47:49 UTC; weisun
