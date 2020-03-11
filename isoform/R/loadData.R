@@ -1,6 +1,6 @@
 
 loadData <-
-function(countFile, bedFile, pdDist, readLen, lmax=500){
+function(countFile, count_col, bedFile, pdDist, readLen, lmax=500){
 
   # --------------------------------------------------------- 
   # read in coverage data
@@ -8,7 +8,12 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
 
   dat = read.table(countFile, as.is=TRUE)
 
-  colNames = c("count", "exons")
+  if(count_col == 1){
+    colNames = c("count", "exons")
+  }else if(count_col == 2){
+    colNames = c("exons", "count")
+  }
+  
   cN = sprintf("%s and %s", colNames[1], colNames[2])
     
   if(ncol(dat) != 2){
@@ -18,6 +23,11 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
   names(dat) = colNames
   dim(dat)
   dat[1:2,]
+  
+  # Check labeled dat columns correctly
+  if(!all(is.numeric(dat$count))){
+    stop("countFile count column not numeric, check if count_col correct \n")
+  }
   
   # --------------------------------------------------------- 
   # obtain transcript cluster IDs and gene IDs
