@@ -1,23 +1,21 @@
 
 loadData <-
-function(countFile, count_col, bedFile, pdDist, readLen, lmax=500){
+function(countFile, bedFile, pdDist, readLen, lmax=500){
 
   # --------------------------------------------------------- 
   # read in coverage data
   # --------------------------------------------------------- 
 
-  dat = read.table(countFile, as.is=TRUE)
-
-  if(count_col == 1){
-    colNames = c("count", "exons")
-  }else if(count_col == 2){
-    colNames = c("exons", "count")
+  dat = read.table
+  
+  if(ncol(dat) != 2){
+    stop(countFile, " should have 2 columns: count and exons \n")
   }
   
-  cN = sprintf("%s and %s", colNames[1], colNames[2])
-    
-  if(ncol(dat) != 2){
-    stop(countFile, " should have 2 columns: ", cN, "\n")
+  if(all(is.numeric(countFile[,1]))){
+    colNames = c("count", "exons")
+  }else if(all(is.numeric(countFile[,2]))){
+    colNames = c("exons", "count")
   }
        
   names(dat) = colNames

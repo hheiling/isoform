@@ -1,5 +1,5 @@
 isoDetector <-
-function(countFile, count_col = 1, bedFile, fragSizeFile, readLen, output, lmax=500, 
+function(countFile, bedFile, fragSizeFile, readLen, output, lmax=500, 
         minCount=5, minObs=2, knownIsoforms=NULL, maxBreaks=5, 
         pvalBreaks=0.05, pvalExpress=0.01, foldExpress=1/5,
         eLenMin=1.0, muMin=0.01, pMaxRel=10, pMaxAbs=2000, 
@@ -31,10 +31,6 @@ function(countFile, count_col = 1, bedFile, fragSizeFile, readLen, output, lmax=
     if(file.access(knownIsoforms, mode=4) != 0){
       stop(sprintf("cannot read file %s.\n", knownIsoforms))
     }
-  }
-  
-  if(!(count_col %in% c(1,2))){
-    stop("count_col must be either 1 or 2 \n")
   }
   
   # --------------------------------------------------------- 
@@ -70,7 +66,7 @@ function(countFile, count_col = 1, bedFile, fragSizeFile, readLen, output, lmax=
   # load counts data and summarize them gene by gene
   # --------------------------------------------------------- 
   
-  geneMod = loadData(countFile, count_col, bedFile, pdDist, readLen, lmax)
+  geneMod = loadData(countFile, bedFile, pdDist, readLen, lmax)
 
   if(verbose >= 1){
     message("finish loading data\n")
