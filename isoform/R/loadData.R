@@ -12,9 +12,9 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
     stop(countFile, " should have 2 columns: count and exons \n")
   }
   
-  if(all(is.numeric(countFile[,1]))){
+  if(all(is.numeric(dat[,1]))){
     colNames = c("count", "exons")
-  }else if(all(is.numeric(countFile[,2]))){
+  }else if(all(is.numeric(dat[,2]))){
     colNames = c("exons", "count")
   }
        
