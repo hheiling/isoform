@@ -6,7 +6,7 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
   # read in coverage data
   # --------------------------------------------------------- 
 
-  dat = read.table
+  dat = read.table(countFile, as.is=TRUE)
   
   if(ncol(dat) != 2){
     stop(countFile, " should have 2 columns: count and exons \n")
