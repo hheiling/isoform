@@ -22,11 +22,6 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
   dim(dat)
   dat[1:2,]
   
-  # Check labeled dat columns correctly
-  if(!all(is.numeric(dat$count))){
-    stop("countFile count column not numeric, check if count_col correct \n")
-  }
-  
   # --------------------------------------------------------- 
   # obtain transcript cluster IDs and gene IDs
   # --------------------------------------------------------- 
