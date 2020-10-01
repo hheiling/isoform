@@ -9,7 +9,19 @@ function(countFile, bedFile, pdDist, readLen, lmax=500){
   dat = read.table(countFile, as.is=TRUE)
   
   if(ncol(dat) != 2){
-    stop(countFile, " should have 2 columns: count and exons \n")
+    if(ncol(dat) == 1 & !is.null(rownames(dat))){
+      # Perform some checks 
+      if(!all(is.numeric(dat[,1]))){
+        stop(countFile, " should have 2 columns: count and exons \n", 
+             "OR should have column of counts with rownames of exons \n")
+      }
+      dat[,2] = rownames(dat)
+      colnames(dat) = NULL
+      rownames(dat) = NULL
+    }else{
+      stop(countFile, " should have 2 columns: count and exons \n", 
+           "OR should have column of counts with rownames of exons \n")
+    }
   }
   
   if(all(is.numeric(dat[,1]))){
